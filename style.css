@@ -1,0 +1,19 @@
+
+
+
+#ui-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 400px;
+    border-style: dotted;
+}
+ul {
+    display: flex;
+    border: red;
+}
+
+.ui-playerChoice {
+    border-style: dashed;
+}
