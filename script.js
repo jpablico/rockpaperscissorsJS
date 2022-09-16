@@ -58,6 +58,7 @@ function playRound (playerChoice, computerPlays) {
         return null;
     }
 }
+/*
 function game() {
     let playerScore = 0;
     let cpuScore = 0;
@@ -90,4 +91,6 @@ function game() {
        
 }
 
+
 console.log(game());
+*/
