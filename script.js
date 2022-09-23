@@ -1,4 +1,24 @@
-// Random choice generator for Computer.
+var playerScore = 0;
+document.getElementsByClassName('playerScore').innerHTML = (`Player: ${playerScore}`);
+var cpuScore = 0;
+
+var playerChoice;
+
+document.querySelector('#rock').onclick = () => {
+    playerChoice = "rock";
+    computerPlays();
+    playRound(playerChoice, computerPlays());
+};
+document.querySelector('#paper').onclick = () => {
+    playerChoice = "paper";
+    computerPlays();
+    playRound(playerChoice,computerPlays());
+};
+document.querySelector('#scissors').onclick = () => {
+    playerChoice = "scissors";
+    computerPlays();
+    playRound(playerChoice,computerPlays());
+};
 function computerPlays() {
     var rndNum = (Math.random() * 100) / 100;
     let cpuChoice = "";
@@ -12,47 +32,48 @@ function computerPlays() {
         else {
             cpuChoice = "scissors";
         }
-//        console.log("Computer chose " + cpuChoice);
         return cpuChoice;
 };
-// Player choice and converstion
-/*
-function playerChoice() {
-    let playerChoice = prompt("Rock, paper, scissors, shoot!");
-    let lwrCasePlayer = playerChoice.toLowerCase();
 
-    console.log("You chose " + lwrCasePlayer);
-    return lwrCasePlayer;
-}
-*/
-var playerChoice;
-// Game Round
 function playRound (playerChoice, computerPlays) {
     if (playerChoice === computerPlays) {
+        document.getElementById('txt-prompt').innerHTML = "It's a draw!";
         console.log("It's a draw! \n" + "You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return null;
     }
     else if (playerChoice === "paper" && computerPlays === "rock") {
+        document.getElementById('txt-prompt').innerHTML = "You win!";
+        playerScore++;
         console.log("You win! \n" + "You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return true;
     }
     else if (playerChoice === "rock" && computerPlays === "scissors") {
+        document.getElementById('txt-prompt').innerHTML = "You win!";
+        playerScore++;
         console.log("You win! \n" + "You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return true;
     }
     else if (playerChoice === "scissors" && computerPlays === "paper") {
+        document.getElementById('txt-prompt').innerHTML = "You win!";
+        playerScore++;
         console.log("You win! \n" + "You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return true;
     }
     else if (playerChoice === "paper" && computerPlays === "scissors") {
+        document.getElementById('txt-prompt').innerHTML = "You lose!";
+        cpuScore++;
         console.log("You lose! \n" + "You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return false;
     }
     else if (playerChoice === "rock" && computerPlays === "paper") {
+        document.getElementById('txt-prompt').innerHTML = "You lose!";
+        cpuScore++;
         console.log("You lose! \n" + "You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return false;
     }
     else if (playerChoice === "scissors" && computerPlays === "rock") {
+        document.getElementById('txt-prompt').innerHTML = "You lose!";
+        cpuScore++;
         console.log("You lose! \n" + "You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return false;
     }
@@ -60,26 +81,6 @@ function playRound (playerChoice, computerPlays) {
         console.log("Something went wrong...");
         return null;
     }
-};
-/*
-let playerChoice = document.querySelector('#rock');
-playerChoice.addEventListener('click', () => {
-    game();
-});
-*/
-document.querySelector('#rock').onclick = () => {
-    playerChoice = "rock";
-    computerPlays();
-    console.log(computerPlays());
-    playRound(playerChoice, computerPlays());
-};
-document.querySelector('#paper').onclick = () => {
-    playerChoice = "paper";
-    playRound();
-};
-document.querySelector('#scissors').onclick = () => {
-    playerChoice = "scissors";
-    playRound();
 };
 function game() {
     let playerScore = 0;

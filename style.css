@@ -1,6 +1,6 @@
 /* body - container */
 body {
-    background-color: #FF8924;
+    background-color: #FF9933;
 }
 
 /* main - container */ 
@@ -21,6 +21,13 @@ h1 {
     font-size: 40px;
     margin-top: 50px;
     margin-bottom: 100px;
+}
+button {
+    background-color: #FF9933;
+    border-style: none;
+    padding: 0;
+    margin: 0;
+    
 }
 .btn {
     background-size: 100%;
