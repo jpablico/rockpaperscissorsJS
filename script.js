@@ -6,16 +6,17 @@ function computerPlays() {
         if(rndNum < 0.34) {
             cpuChoice = "rock";
         }
-        else if (rndNum <= 67) {
+        else if (rndNum <= 0.67) {
             cpuChoice = "paper";
         }
         else {
             cpuChoice = "scissors";
         }
-        console.log("Computer chose " + cpuChoice);
+//        console.log("Computer chose " + cpuChoice);
         return cpuChoice;
-}
+};
 // Player choice and converstion
+/*
 function playerChoice() {
     let playerChoice = prompt("Rock, paper, scissors, shoot!");
     let lwrCasePlayer = playerChoice.toLowerCase();
@@ -23,6 +24,8 @@ function playerChoice() {
     console.log("You chose " + lwrCasePlayer);
     return lwrCasePlayer;
 }
+*/
+var playerChoice;
 // Game Round
 function playRound (playerChoice, computerPlays) {
     if (playerChoice === computerPlays) {
@@ -57,14 +60,33 @@ function playRound (playerChoice, computerPlays) {
         console.log("Something went wrong...");
         return null;
     }
-}
+};
 /*
+let playerChoice = document.querySelector('#rock');
+playerChoice.addEventListener('click', () => {
+    game();
+});
+*/
+document.querySelector('#rock').onclick = () => {
+    playerChoice = "rock";
+    computerPlays();
+    console.log(computerPlays());
+    playRound(playerChoice, computerPlays());
+};
+document.querySelector('#paper').onclick = () => {
+    playerChoice = "paper";
+    playRound();
+};
+document.querySelector('#scissors').onclick = () => {
+    playerChoice = "scissors";
+    playRound();
+};
 function game() {
     let playerScore = 0;
     let cpuScore = 0;
 
     for (let i = 0; i < 12; i++) {
-        var playFive = playRound(playerChoice(),computerPlays());
+        var playFive = playRound(playerChoice,computerPlays());
 
         if (playFive === true) {
             playerScore++;
@@ -90,7 +112,3 @@ function game() {
     }
        
 }
-
-
-console.log(game());
-*/

@@ -25,6 +25,9 @@ h1 {
 .btn {
     background-size: 100%;
 }
+svg {
+    fill-opacity: none;
+}
 .pC-image {
     display: flex;
     flex-direction: column;
