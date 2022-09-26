@@ -16,8 +16,8 @@ document.querySelector('#paper').onclick = () => {
 };
 document.querySelector('#scissors').onclick = () => {
     playerChoice = "scissors";
-    computerPlays();
-    playRound(playerChoice,computerPlays());
+    gamePlay();
+    ;
 };
 function computerPlays() {
     var rndNum = (Math.random() * 100) / 100;
@@ -34,17 +34,6 @@ function computerPlays() {
         }
         return cpuChoice;
 };
-function gameScore(playerScore, cpuScore) {
-    if(playerScore === 6) {
-        document.getElementById('txt-prompt').innerHTML = "Player wins!";
-    }
-    else if(cpuScore === 6) {
-        document.getElementById('txt-prompt').innerHTML = "Computer wins!";
-    }
-    else {
-        return NaN;
-    }
-}
 function playRound (playerChoice, computerPlays) {
     if (playerChoice === computerPlays) {
         document.getElementById('txt-prompt').innerHTML = "It's a draw!";
@@ -53,39 +42,31 @@ function playRound (playerChoice, computerPlays) {
     }
     else if (playerChoice === "paper" && computerPlays === "rock") {
         document.getElementById('txt-prompt').innerHTML = "You win!";
-        playerScore++;
-        console.log(playerScore);
         document.getElementById('gameOutput').innerHTML = ("You chose " + playerChoice + " and the CPU chose " + computerPlays);
-        gameScore(playerScore);
         return true;
     }
     else if (playerChoice === "rock" && computerPlays === "scissors") {
         document.getElementById('txt-prompt').innerHTML = "You win!";
-        playerScore++;
         document.getElementById('gameOutput').innerHTML = ("You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return true;
     }
     else if (playerChoice === "scissors" && computerPlays === "paper") {
         document.getElementById('txt-prompt').innerHTML = "You win!";
-        playerScore++;
         document.getElementById('gameOutput').innerHTML = ("You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return true;
     }
     else if (playerChoice === "paper" && computerPlays === "scissors") {
         document.getElementById('txt-prompt').innerHTML = "You lose!";
-        cpuScore++;
         document.getElementById('gameOutput').innerHTML = ("You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return false;
     }
     else if (playerChoice === "rock" && computerPlays === "paper") {
         document.getElementById('txt-prompt').innerHTML = "You lose!";
-        cpuScore++;
         document.getElementById('gameOutput').innerHTML = ("You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return false;
     }
     else if (playerChoice === "scissors" && computerPlays === "rock") {
         document.getElementById('txt-prompt').innerHTML = "You lose!";
-        cpuScore++;
         document.getElementById('gameOutput').innerHTML = ("You chose " + playerChoice + " and the CPU chose " + computerPlays);
         return false;
     }
@@ -114,6 +95,7 @@ function game() {
             console.log("Player:" + playerScore + "\n" + "Computer: " + cpuScore);
         }
         if (playerScore === 3 && cpuScore === 3) {
+    
             return "The Game is a Tie!";
         }
         else if (playerScore === 3 && cpuScore <= 2){
@@ -123,5 +105,21 @@ function game() {
             return "The computer wins, better luck next time!";
         } 
     }
-       
-}
+};
+function gamePlay() {
+    let round = playRound();
+    if(round = true) {
+        playerScore++;
+        gameScore();
+        return;
+    }
+    else if(round =false){
+        cpuScore++;
+        gameScore();
+        return;
+    }
+};
+function gameScore() {
+    document.getElementById('playerScore').innerHTML = playerScore;
+    document.getElementById('computerScore').innerHTML = cpuScore;
+};
