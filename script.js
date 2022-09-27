@@ -6,17 +6,15 @@ var playerChoice;
 
 document.querySelector('#rock').onclick = () => {
     playerChoice = "rock";
-    computerPlays();
-    game(playRound(playerChoice, computerPlays()));
+    gamePlay(playerChoice,computerPlays());
 };
 document.querySelector('#paper').onclick = () => {
     playerChoice = "paper";
-    computerPlays();
-    playRound(playerChoice,computerPlays());
+    gamePlay(playerChoice,computerPlays());
 };
 document.querySelector('#scissors').onclick = () => {
     playerChoice = "scissors";
-    gamePlay();
+    gamePlay(playerChoice,computerPlays());
     ;
 };
 function computerPlays() {
@@ -106,20 +104,35 @@ function game() {
         } 
     }
 };
-function gamePlay() {
-    let round = playRound();
-    if(round = true) {
+function gamePlay(playerChoice,computerPlays) {
+    let round = playRound(playerChoice,computerPlays);
+    console.log(round);
+    if(round === true) {
         playerScore++;
         gameScore();
         return;
     }
-    else if(round =false){
+    else if(round === false) {
         cpuScore++;
         gameScore();
+        return;
+    }
+    else {
         return;
     }
 };
 function gameScore() {
     document.getElementById('playerScore').innerHTML = playerScore;
     document.getElementById('computerScore').innerHTML = cpuScore;
+    if(playerScore === 5) {
+        document.getElementById('txt-prompt').innerHTML = "You've Won!";
+        return;
+    }
+    else if(cpuScore === 5) {
+        document.getElementById('txt-prompt').innerHTML = "You've Lost";
+        return;
+    }
+    else {
+        return;
+    }
 };
